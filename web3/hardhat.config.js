@@ -4,6 +4,7 @@ require("@matterlabs/hardhat-zksync-solc");
 module.exports = {
   zksolc: {
     version: "1.3.9",
+    
     compilerSource: "binary",
     settings: {
       optimizer: {
@@ -32,7 +33,15 @@ module.exports = {
     tests: "./test",
   },
   solidity: {
-    version: "0.8.17",
+    version: "0.8.9",
+    defaultNetwork: 'goerli',
+    networks: {
+      hardhat: {},
+      goerli: {
+        url: 'https://rpc.ankr.com/eth_goerli',
+        accounts: [`0x${process.env.PRIVATE_KEY}`],
+      },
+    },
     settings: {
       optimizer: {
         enabled: true,
